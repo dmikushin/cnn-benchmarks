@@ -7,15 +7,17 @@ parser.add_argument('--results_dir', default='outputs')
 parser.add_argument('--include_std', default=0)
 args = parser.parse_args()
 
-
 # Maps the cuDNN version reported by torch.cudnn to a more friendly string
-cudnn_map = {
-  5005: '5.0.05',
-  5105: '5.1.05',
-  5110: '5.1.10',
-  4007: '4.0.07',
-  'none': 'None',
-}
+def cudnn_name(version):
+  if version==None or version=='none':
+      return 'None'
+  if isinstance(version, str):
+      return version
+  # 5105 -> '5.1.05'
+  minor = version % 100
+  mid = version / 100 % 10
+  major = version / 1000
+  return '%d.%d.%02d' % (major, mid, minor)
 
 # Maps the GPU name reported by the driver to a more friendly string
 gpu_name_map = {
@@ -76,8 +78,7 @@ def main(args):
           if k not in keyed_results: continue
           result = keyed_results[k]
 
-          cudnn_str = cudnn_map[cudnn_version]
-          cudnn_str = cudnn_map.get(cudnn_version, cudnn_version)
+          cudnn_str = cudnn_name(cudnn_version)
           gpu_str = gpu_name_map.get(gpu_name, gpu_name)
 
           f_mean = mean(result['forward_times']) * 1000
