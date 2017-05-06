@@ -89,14 +89,14 @@ def main(args):
           t_std = std(result['total_times']) * 1000
 
           if args.include_std == 1:
-            f_str = '% 6.2f += % 4.2f' % (f_mean, f_std)
-            b_str = '% 6.2f += % 4.2f' % (b_mean, b_std)
-            t_str = '% 6.2f += % 4.2f' % (t_mean, t_std)
+            f_str = '%7.2f += %4.2f' % (f_mean, f_std)
+            b_str = '%7.2f += %4.2f' % (b_mean, b_std)
+            t_str = '%7.2f += %4.2f' % (t_mean, t_std)
           else:
-            f_str = '% 6.2f' % f_mean
-            b_str = '% 6.2f' % b_mean
-            t_str = '% 6.2f' % t_mean
-          table_lines[t_mean] = '|%-25s|%-8s|%s|%s|%s|' % (
+            f_str = '%7.2f' % f_mean
+            b_str = '%7.2f' % b_mean
+            t_str = '%7.2f' % t_mean
+          table_lines[t_mean] = '|%-25s|%-7s|%s|%s|%s|' % (
                 gpu_str, cudnn_str, f_str, b_str, t_str)
 
       table_lines = [table_lines[k] for k in sorted(table_lines)]
