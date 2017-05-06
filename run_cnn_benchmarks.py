@@ -32,6 +32,12 @@ def main(args):
 
   base_command = 'th cnn_benchmark.lua'
 
+  try: 
+    os.makedirs(args.output_dir)
+  except OSError:
+    if not os.path.isdir(args.output_dir):
+      raise
+
   output_jsons = set()
   for vals in itertools.product(*factors.values()):
     lua_args = dict(zip(factors.keys(), vals))
