@@ -4,7 +4,7 @@ from collections import defaultdict
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--results_dir', default='outputs')
-parser.add_argument('--include_std', default=0)
+parser.add_argument('--include_std', default=0, action='store_const', const=1)
 args = parser.parse_args()
 
 # Maps the cuDNN version reported by torch.cudnn to a more friendly string
