@@ -1,6 +1,6 @@
 # cnn-benchmarks
 
-Benchmarks for popular convolutional neural network models on different GPUs often found on the Computing Clouds.
+Benchmarks for popular convolutional neural network models on different GPUs often found on the Computing Clouds. We use desktop GTX 1080 for the reference.
 
 We use the following GPUs for benchmarking:
 
@@ -63,17 +63,12 @@ GPUs, which had only 3GB of memory each. Grouped convolutions are no longer comm
 not even implemented by the [torch/nn](https://github.com/torch/nn) backend; therefore we can only
 benchmark AlexNet using cuDNN.
 
-alexnet (input 16 x 3 x 224 x 224)
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |   5.04|   9.52|  14.56|
-|Pascal Titan X           |5.0.05 |   5.32|  10.90|  16.23|
 |Quadro P5000             |5.1.10 |   5.91|  13.68|  19.58|
+|GTX 1080                 |5.1.10 |   5.97|  13.87|  19.84|
 |GTX 1080                 |5.1.05 |   7.00|  13.74|  20.74|
-|Maxwell Titan X          |5.1.05 |   7.09|  14.76|  21.85|
-|GTX 1080                 |5.0.05 |   7.35|  15.73|  23.08|
-|Maxwell Titan X          |5.0.05 |   7.55|  17.78|  25.33|
-|Maxwell Titan X          |4.0.07 |   8.03|  17.91|  25.94|
+|GTX 1080                 |5.0.05 |   7.37|  15.80|  23.16|
 |Quadro M4000             |5.1.05 |  14.23|  29.52|  43.75|
 |Tesla K80                |5.1.10 |  15.98|  31.63|  47.61|
 |GRID K520                |5.1.10 |  39.77|  66.51| 106.28|
@@ -87,23 +82,12 @@ We use the Torch implementation of Inception-V1 from
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  12.06|  27.08|  39.14|
-|Pascal Titan X           |5.0.05 |  11.94|  28.39|  40.33|
+|GTX 1080                 |5.1.10 |  15.79|  35.99|  51.78|
 |Quadro P5000             |5.1.10 |  16.03|  36.83|  52.86|
 |GTX 1080                 |5.0.05 |  16.08|  40.08|  56.16|
-|Maxwell Titan X          |5.1.05 |  19.29|  42.69|  61.98|
-|Maxwell Titan X          |5.0.05 |  19.27|  46.41|  65.68|
-|Maxwell Titan X          |4.0.07 |  21.04|  49.41|  70.45|
 |Quadro M4000             |5.1.05 |  40.29|  89.48| 129.77|
-|Pascal Titan X           |None   |  57.46|  85.90| 143.36|
 |Tesla K80                |5.1.10 |  45.43| 111.21| 156.64|
-|GTX 1080                 |None   |  63.03| 102.31| 165.34|
-|Quadro P5000             |None   |  67.41| 109.17| 176.58|
-|Maxwell Titan X          |None   |  91.31| 140.81| 232.12|
 |GRID K520                |5.1.10 |  86.28| 226.87| 313.15|
-|Tesla K80                |None   | 123.85| 270.58| 394.43|
-|Quadro M4000             |None   | 156.67| 280.24| 436.91|
-|GRID K520                |None   | 173.53| 485.02| 658.54|
 
 
 ## VGG-16
@@ -114,23 +98,12 @@ This is Model D in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  41.59|  87.03| 128.62|
-|Pascal Titan X           |5.0.05 |  46.16| 111.23| 157.39|
 |Quadro P5000             |5.1.10 |  58.16| 122.14| 180.30|
 |GTX 1080                 |5.1.05 |  59.37| 123.42| 182.79|
-|Maxwell Titan X          |5.1.05 |  62.30| 130.48| 192.78|
-|GTX 1080                 |5.0.05 |  67.10| 167.79| 234.89|
-|Maxwell Titan X          |5.0.05 |  75.80| 186.47| 262.27|
-|Maxwell Titan X          |4.0.07 | 111.99| 226.69| 338.69|
-|Pascal Titan X           |None   |  98.15| 260.38| 358.53|
+|GTX 1080                 |5.1.10 |  60.27| 123.15| 183.42|
+|GTX 1080                 |5.0.05 |  67.27| 166.17| 233.43|
 |Quadro M4000             |5.1.05 | 144.84| 299.51| 444.35|
 |Tesla K80                |5.1.10 | 153.67| 295.74| 449.40|
-|GTX 1080                 |None   | 143.46| 378.97| 522.43|
-|Maxwell Titan X          |None   | 172.61| 415.87| 588.47|
-|Quadro P5000             |None   | 141.54| 467.51| 609.05|
-|Tesla K80                |None   | 346.23|1048.81|1395.04|
-|Quadro M4000             |None   | 387.19|1021.92|1409.11|
-|GRID K520                |None   | 675.96|1937.51|2613.48|
 |CPU: Dual Xeon E5-2630 v3|None   |3101.76|5393.72|8495.48|
 
 
@@ -143,24 +116,14 @@ This is Model E in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  48.09|  99.23| 147.32|
-|Pascal Titan X           |5.0.05 |  55.75| 134.98| 190.73|
 |Quadro P5000             |5.1.10 |  67.68| 139.79| 207.47|
+|GTX 1080                 |5.1.10 |  69.27| 140.89| 210.16|
 |GTX 1080                 |5.1.05 |  68.95| 141.44| 210.39|
-|Maxwell Titan X          |5.1.05 |  73.66| 151.48| 225.14|
 |GTX 1080                 |5.0.05 |  79.79| 202.02| 281.81|
-|Maxwell Titan X          |5.0.05 |  93.47| 229.34| 322.81|
-|Maxwell Titan X          |4.0.07 | 139.01| 279.21| 418.22|
-|Pascal Titan X           |None   | 121.69| 318.39| 440.08|
 |Quadro M4000             |5.1.05 | 169.70| 347.80| 517.50|
 |Tesla K80                |5.1.10 | 179.85| 347.85| 527.69|
-|GTX 1080                 |None   | 176.26| 453.51| 629.78|
-|Maxwell Titan X          |None   | 215.92| 491.21| 707.13|
-|Quadro P5000             |None   | 170.57| 539.11| 709.68|
-|Quadro M4000             |None   | 466.50|1199.18|1665.68|
-|Tesla K80                |None   | 441.91|1223.81|1665.72|
-|GRID K520                |None   | 826.84|2275.49|3102.33|
 |CPU: Dual Xeon E5-2630 v3|None   |3609.78|6239.45|9849.23|
+
 
 
 ## ResNet-18
@@ -171,25 +134,14 @@ This is the 18-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  10.14|  21.40|  31.54|
-|Pascal Titan X           |5.0.05 |  10.06|  23.08|  33.13|
+|GTX 1080                 |5.1.10 |  14.48|  29.35|  43.83|
 |GTX 1080                 |5.1.05 |  14.62|  29.32|  43.94|
 |Quadro P5000             |5.1.10 |  14.58|  29.48|  44.06|
 |GTX 1080                 |5.0.05 |  14.84|  32.68|  47.52|
-|Maxwell Titan X          |5.1.05 |  16.87|  34.55|  51.42|
-|Maxwell Titan X          |5.0.05 |  17.08|  37.79|  54.87|
-|Maxwell Titan X          |4.0.07 |  21.54|  42.26|  63.80|
-|Pascal Titan X           |None   |  34.76|  61.64|  96.40|
 |Quadro M4000             |5.1.05 |  35.13|  74.08| 109.21|
 |Tesla K80                |5.1.10 |  37.87|  74.88| 112.74|
-|GTX 1080                 |None   |  42.89|  79.27| 122.16|
-|Quadro P5000             |None   |  56.55|  86.30| 142.85|
-|Maxwell Titan X          |None   |  55.82|  96.01| 151.82|
 |GRID K520                |5.1.10 |  64.82| 140.53| 205.36|
-|Tesla K80                |None   |  93.97| 218.30| 312.27|
-|Quadro M4000             |None   | 119.68| 211.15| 330.83|
-|GRID K520                |None   | 129.53| 375.19| 504.72|
-|CPU: Dual Xeon E5-2630 v3|None   | 847.46|1348.33|2195.78|
+|CPU: Dual Xeon E5-2630 v3|None   | 859.70|1360.30|2220.01|
 
 
 ## ResNet-34
@@ -200,24 +152,13 @@ This is the 34-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  17.01|  34.58|  51.59|
-|Pascal Titan X           |5.0.05 |  16.91|  38.67|  55.58|
 |GTX 1080                 |5.1.05 |  24.50|  47.59|  72.09|
+|GTX 1080                 |5.1.10 |  24.31|  47.86|  72.17|
 |Quadro P5000             |5.1.10 |  24.57|  48.04|  72.61|
 |GTX 1080                 |5.0.05 |  24.76|  55.00|  79.76|
-|Maxwell Titan X          |5.1.05 |  27.33|  52.90|  80.23|
-|Maxwell Titan X          |5.0.05 |  28.79|  63.19|  91.98|
-|Maxwell Titan X          |4.0.07 |  40.12|  76.00| 116.11|
-|Pascal Titan X           |None   |  66.56| 106.42| 172.98|
 |Quadro M4000             |5.1.05 |  59.09| 118.13| 177.22|
 |Tesla K80                |5.1.10 |  64.79| 124.24| 189.03|
-|GTX 1080                 |None   |  83.53| 137.20| 220.73|
-|Quadro P5000             |None   |  99.09| 145.22| 244.31|
-|Maxwell Titan X          |None   | 108.95| 166.19| 275.13|
 |GRID K520                |5.1.10 | 112.04| 231.02| 343.06|
-|Tesla K80                |None   | 182.73| 373.18| 555.91|
-|Quadro M4000             |None   | 239.96| 361.10| 601.07|
-|GRID K520                |None   | 241.68| 645.94| 887.62|
 |CPU: Dual Xeon E5-2630 v3|None   |1530.01|2435.20|3965.21|
 
 
@@ -229,22 +170,12 @@ This is the 50-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  35.03|  68.54| 103.58|
-|Pascal Titan X           |5.0.05 |  35.03|  70.76| 105.78|
 |Quadro P5000             |5.1.10 |  48.77|  98.72| 147.49|
+|GTX 1080                 |5.1.10 |  50.24|  98.41| 148.65|
 |GTX 1080                 |5.1.05 |  50.64|  99.18| 149.82|
 |GTX 1080                 |5.0.05 |  50.76| 103.35| 154.11|
-|Maxwell Titan X          |5.1.05 |  55.75| 103.87| 159.62|
-|Maxwell Titan X          |5.0.05 |  56.30| 109.75| 166.05|
-|Maxwell Titan X          |4.0.07 |  62.03| 116.81| 178.84|
-|Pascal Titan X           |None   |  87.62| 158.96| 246.58|
-|GTX 1080                 |None   | 109.20| 200.39| 309.59|
-|Quadro P5000             |None   | 120.34| 225.14| 345.49|
 |Quadro M4000             |5.1.05 | 117.52| 228.17| 345.69|
-|Maxwell Titan X          |None   | 137.14| 247.65| 384.79|
 |Tesla K80                |5.1.10 | 124.38| 274.43| 398.81|
-|Tesla K80                |None   | 237.43| 530.17| 767.60|
-|Quadro M4000             |None   | 280.67| 519.51| 800.18|
 |CPU: Dual Xeon E5-2630 v3|None   |2477.61|4149.64|6627.25|
 
 
@@ -256,22 +187,12 @@ This is the 101-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  53.38| 103.06| 156.44|
-|Pascal Titan X           |5.0.05 |  53.28| 108.20| 161.48|
 |Quadro P5000             |5.1.10 |  75.21| 148.67| 223.88|
+|GTX 1080                 |5.1.10 |  76.92| 147.43| 224.34|
 |GTX 1080                 |5.1.05 |  77.59| 148.21| 225.80|
 |GTX 1080                 |5.0.05 |  77.39| 158.19| 235.58|
-|Maxwell Titan X          |5.1.05 |  87.76| 159.73| 247.49|
-|Maxwell Titan X          |5.0.05 |  88.45| 172.12| 260.57|
-|Maxwell Titan X          |4.0.07 | 108.96| 189.93| 298.90|
-|Pascal Titan X           |None   | 161.55| 257.57| 419.11|
-|GTX 1080                 |None   | 203.19| 322.48| 525.67|
-|Quadro P5000             |None   | 194.46| 340.20| 534.66|
 |Quadro M4000             |5.1.05 | 186.16| 350.82| 536.98|
 |Tesla K80                |5.1.10 | 199.41| 486.11| 685.52|
-|Maxwell Titan X          |None   | 260.48| 453.45| 713.93|
-|Tesla K80                |None   | 441.69| 868.39|1310.08|
-|Quadro M4000             |None   | 539.77| 837.91|1377.68|
 |CPU: Dual Xeon E5-2630 v3|None   |4414.91|6891.33|11306.24|
 
 
@@ -284,22 +205,11 @@ This is the 152-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 |  75.45| 142.47| 217.91|
-|Pascal Titan X           |5.0.05 |  75.12| 150.08| 225.20|
 |Quadro P5000             |5.1.10 | 106.26| 204.86| 311.13|
 |GTX 1080                 |5.1.05 | 109.32| 204.98| 314.30|
 |GTX 1080                 |5.0.05 | 109.64| 218.62| 328.26|
-|Maxwell Titan X          |5.1.05 | 124.04| 221.41| 345.45|
-|Maxwell Titan X          |5.0.05 | 124.88| 240.16| 365.03|
-|Maxwell Titan X          |4.0.07 | 150.90| 268.64| 419.54|
-|Pascal Titan X           |None   | 238.04| 371.40| 609.43|
-|Quadro P5000             |None   | 271.89| 471.59| 743.48|
 |Quadro M4000             |5.1.05 | 264.14| 482.02| 746.16|
-|GTX 1080                 |None   | 299.05| 461.67| 760.72|
-|Maxwell Titan X          |None   | 382.39| 583.83| 966.22|
 |Tesla K80                |5.1.10 | 283.68| 700.15| 983.83|
-|Tesla K80                |None   | 645.85|1221.22|1867.07|
-|Quadro M4000             |None   | 791.00|1182.96|1973.95|
 |CPU: Dual Xeon E5-2630 v3|None   |6572.17|10300.61|16872.78|
 
 
@@ -309,22 +219,13 @@ This is the 152-layer model described in [[4]](#resnet-cvpr) and implemented in
 This is the 200-layer model described in [[5]](#resnet-eccv) and implemented in 
 [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch).
 
-Even with a batch size of 16, the 8GB GTX 1080 did not have enough memory to run
+Even with a batch size of 16, the 8GB GTX 1080, M4000 and K520 did not have enough memory to run
 the model.
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
-|Pascal Titan X           |5.1.05 | 104.74| 191.77| 296.51|
-|Pascal Titan X           |5.0.05 | 104.36| 201.92| 306.27|
 |Quadro P5000             |5.1.10 | 146.78| 275.36| 422.14|
-|Maxwell Titan X          |5.0.05 | 170.03| 320.80| 490.83|
-|Maxwell Titan X          |5.1.05 | 169.62| 383.80| 553.42|
-|Maxwell Titan X          |4.0.07 | 203.52| 356.35| 559.87|
-|Pascal Titan X           |None   | 314.77| 519.72| 834.48|
-|Quadro P5000             |None   | 350.19| 641.32| 991.51|
 |Tesla K80                |5.1.10 | 385.33| 904.29|1289.63|
-|Maxwell Titan X          |None   | 497.57| 953.94|1451.51|
-|Tesla K80                |None   | 834.82|1623.46|2458.28|
 |CPU: Dual Xeon E5-2630 v3|None   |8666.43|13758.73|22425.16|
 
 
