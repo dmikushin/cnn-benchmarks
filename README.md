@@ -1,6 +1,8 @@
 # cnn-benchmarks
 
-Benchmarks for popular convolutional neural network models on different GPUs often found on the Computing Clouds. We use desktop GTX 1080 for the reference.
+Benchmarks for popular convolutional neural network models on different GPUs often found on the Computing Clouds. We use desktop GTX 1080 and CPU for the reference.
+
+This benchmarks is a fork of [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
 
 We use the following GPUs for benchmarking:
 
@@ -13,43 +15,15 @@ We use the following GPUs for benchmarking:
 |[GTX 1080](http://www.geforce.com/hardware/10series/geforce-gtx-1080)|8GB GDDRX5|Pascal|2560|8.87|May 2016|
 
 Some general conclusions from this benchmarking:
-- **Install latest cuDNN**: cuDNN5. is slightly faster ...
-
-
-- **Pascal Titan X > GTX 1080**: Across all models, the Pascal Titan X is **1.31x to 1.43x** faster than the GTX 1080 and **1.47x to 1.60x** faster than the Maxwell Titan X. This is without a doubt the best card you can get for deep learning right now.
-- **GTX 1080 > Maxwell Titan X**: Across all models, the GTX 1080 is **1.10x to 1.15x** faster than the Maxwell Titan X.
-2.8x** faster than nn; on the Maxwell Titan X, cuDNN is **2.2x to 3.0x** faster than nn.
-
-- **GPUs are critical**: The Pascal Titan X with cuDNN is **49x to 74x** faster than dual Xeon E5-2630 v3 CPUs.
+- **Quadro P5000 == GTX 1080**: Performance of both GPUs is very close on all models. The main difference is twice more memory in server-side Quadro P5000.
+- **Quadro P5000 > Quadro M40000**: Across all models, the Quadro P5000 is **2.2x to 2.5x** faster.
+- **Quadro M4000 > Tesla K80**: Across all models, the Quadro M4000 is **1.05x to 1.25x** faster than Tesla K80, but has less memory.
+- **Tesla K80 > GRID K520**: Across all models, the Tesla K80 is **1.8 to 2.25** faster than GRID K520.
+- **Prefer latest cuDNN**: cuDNN5.1.10 is slightly faster than 5.1.05 which in turn is faster than 5.0.05. However at least one caveat was noticed with cuDNN5.1.10 - 8GB GTX 1080 failed on [ResNet-152](#resnet-152) while previous cuDNN versions run the model fine.
 
 All benchmarks were run in Torch, Ubuntu 14.04 with the CUDA 8.0 Release Candidate.
 
-All settings ...
-
-The following models are benchmarked:
-
-|Network|Layers|Top-1 error|Top-5 error|Speed (ms)|Citation|
-|---|---:|---:|---:|---:|---|
-|[AlexNet](#alexnet)|8|42.90|19.80|14.56|[[1]](#alexnet-paper)|
-|[Inception-V1](#inception-v1)|22|-|10.07|39.14|[[2]](#inception-v1-paper)|
-|[VGG-16](#vgg-16)|16|27.00|8.80|128.62|[[3]](#vgg-paper)|
-|[VGG-19](#vgg-19)|19|27.30|9.00|147.32|[[3]](#vgg-paper)|
-|[ResNet-18](#resnet-18)|18|30.43|10.76|31.54|[[4]](#resnet-cvpr)|
-|[ResNet-34](#resnet-34)|34|26.73|8.74|51.59|[[4]](#resnet-cvpr)|
-|[ResNet-50](#resnet-50)|50|24.01|7.02|103.58|[[4]](#resnet-cvpr)|
-|[ResNet-101](#resnet-101)|101|22.44|6.21|156.44|[[4]](#resnet-cvpr)|
-|[ResNet-152](#resnet-152)|152|22.16|6.16|217.91|[[4]](#resnet-cvpr)|
-|[ResNet-200](#resnet-200)|200|21.66|5.79|296.51|[[5]](#resnet-eccv)|
-
-Top-1 and Top-5 error are single-crop error rates on the ILSVRC 2012 Validation set,
-except for VGG-16 and VGG-19 which instead use dense prediction on a 256x256 image.
-This gives the VGG models a slight advantage, but I was unable to find single-crop error
-rates for these models. All models perform better when using more than one crop at test-time.
-
-Speed is the total time for a forward and backward pass on a Pascal Titan X with cuDNN 5.1.
-
-You can download the model files used for benchmarking [here](https://drive.google.com/open?id=0Byvt-AfX75o1STUxZTFpMU10djA) (2.1 GB);
-these were converted from Caffe or Torch checkpoints using the `convert_model.lua` script.
+All settings and models are exactly the same as in the [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
 
 
 
@@ -202,6 +176,8 @@ This is the 101-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 This is the 152-layer model described in [[4]](#resnet-cvpr) and implemented in 
 [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch).
+
+Curiously cuDNN5.1.10 on the 8GB GTX 1080 run out of memory while previous versions of cuDNN managed to run the model fine.
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
