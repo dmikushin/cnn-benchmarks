@@ -4,7 +4,7 @@ from collections import defaultdict
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--results_dir', default='outputs')
-parser.add_argument('--include_std', default=0, action='store_const', const=1)
+parser.add_argument('--include_std', default=False, action='store_true')
 args = parser.parse_args()
 
 # Maps the cuDNN version reported by torch.cudnn to a more friendly string
@@ -88,7 +88,7 @@ def main(args):
           t_mean = mean(result['total_times']) * 1000
           t_std = std(result['total_times']) * 1000
 
-          if args.include_std == 1:
+          if args.include_std:
             f_str = '%7.2f += %4.2f' % (f_mean, f_std)
             b_str = '%7.2f += %4.2f' % (b_mean, b_std)
             t_str = '%7.2f += %4.2f' % (t_mean, t_std)
