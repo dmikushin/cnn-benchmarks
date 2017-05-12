@@ -29,6 +29,20 @@ gpu_name_map = {
   'cpu': 'CPU: Dual Xeon E5-2630 v3',
 }
 
+# List defines order in which models will be printed
+# Matches order in README.md
+model_names_sorted = [
+  'alexnet',
+  'vgg16',
+  'vgg19',
+  'googlenet-v1',
+  'resnet-18',
+  'resnet-34',
+  'resnet-50',
+  'resnet-101',
+  'resnet-152',
+  'resnet-200'
+]
 
 def main(args):
   # Load all the results
@@ -65,9 +79,15 @@ def main(args):
     for v in vs:
       print '  %s' % v
   
-  markdown_tables = {}
+  markdown_tables = []
+
+  models = all_values['model']
+  # Sort loaded models to match README.md
+  sorted_models = [x for x in model_names_sorted if x in models]
+  # Append any remaining models that are not yet mentioned in README.md at the end
+  sorted_models += [x for x in models if x not in model_names_sorted]
   
-  for model in all_values['model']:
+  for model in sorted_models:
     for input_size in all_values['input_size']:
       table_header = '|GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|'
       table_header2 = '|---|---|---:|---:|---:|'
@@ -102,9 +122,9 @@ def main(args):
       table_lines = [table_lines[k] for k in sorted(table_lines)]
       table_lines = [table_header, table_header2] + table_lines
       model_batch_str = '%s (input %s)' % (model, input_size)
-      markdown_tables[model_batch_str] = table_lines
+      markdown_tables.append((model_batch_str, table_lines))
 
-  for model, table_lines in markdown_tables.iteritems():
+  for model, table_lines in markdown_tables:
     print model
     for line in table_lines:
       print line
