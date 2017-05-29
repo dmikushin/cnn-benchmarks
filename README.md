@@ -6,13 +6,13 @@ This benchmarks is a fork of [jcjohnson/cnn-benchmarks](https://github.com/jcjoh
 
 We use the following GPUs for benchmarking:
 
-|GPU|Cloud|Memory|Architecture|CUDA Cores|FP32 TFLOPS|Release Date|
-|---|---|---|---|---:|---:|---|
-|[Quadro P5000](https://www.techpowerup.com/gpudb/2864/quadro-p5000)|[Paperspace](https://www.paperspace.com)|16GB GDDRX5|Pascal|2560|8.22|Oct 2016|
-|[Quadro M4000](https://www.techpowerup.com/gpudb/2757/quadro-m4000)|[Paperspace](https://www.paperspace.com)|8GB GDDR5|Maxwell|1664|2.57|Jun 2015|
-|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon EC2](https://aws.amazon.com), [Azure](http://azure.microsoft.com/), [Google Cloud](https://cloud.google.com)|12GB GDDR5|Kepler|2496|2.80|Nov 2014|
-|[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon EC2](https://aws.amazon.com)|4GB GDDR5|Kepler|1536|2.45|Jul 2013|
-|[GTX 1080](http://www.geforce.com/hardware/10series/geforce-gtx-1080)|Desktop|8GB GDDRX5|Pascal|2560|8.87|May 2016|
+|GPU|Cloud|Instance Name|Memory|Architecture|CUDA Cores|FP32 TFLOPS|Release Date|
+|---|---|---|---|---|---:|---:|---|
+|[Quadro P5000](https://www.techpowerup.com/gpudb/2864/quadro-p5000)|[Paperspace](https://www.paperspace.com)|P5000|16GB GDDRX5|Pascal|2560|8.22|Oct 2016|
+|[Quadro M4000](https://www.techpowerup.com/gpudb/2757/quadro-m4000)|[Paperspace](https://www.paperspace.com)|GPU+|8GB GDDR5|Maxwell|1664|2.57|Jun 2015|
+|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon EC2](https://aws.amazon.com), [Azure](http://azure.microsoft.com/), [Google Cloud](https://cloud.google.com)|p2|12GB GDDR5|Kepler|2496|2.80|Nov 2014|
+|[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon EC2](https://aws.amazon.com)|g2|4GB GDDR5|Kepler|1536|2.45|Jul 2013|
+|[GTX 1080](http://www.geforce.com/hardware/10series/geforce-gtx-1080)|Desktop||8GB GDDRX5|Pascal|2560|8.87|May 2016|
 
 Some general conclusions from this benchmarking:
 - **Quadro P5000 == GTX 1080**: Performance of both GPUs is very close on all models. The main difference is twice more memory in server-side Quadro P5000.
