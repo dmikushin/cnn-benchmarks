@@ -42,7 +42,7 @@ benchmark AlexNet using cuDNN.
 |Quadro P5000             |5.1.10 |   5.91|  13.68|  19.58|
 |GTX 1080                 |5.1.10 |   5.97|  13.87|  19.84|
 |GTX 1080                 |5.1.05 |   7.00|  13.74|  20.74|
-|GTX 1080                 |5.0.05 |   7.37|  15.80|  23.16|
+|Tesla M60                |5.1.10 |  10.79|  24.53|  35.32|
 |Quadro M4000             |5.1.05 |  14.23|  29.52|  43.75|
 |Tesla K80                |5.1.10 |  15.98|  31.63|  47.61|
 |GRID K520                |5.1.10 |  39.77|  66.51| 106.28|
@@ -58,7 +58,7 @@ We use the Torch implementation of Inception-V1 from
 |---|---|---:|---:|---:|
 |GTX 1080                 |5.1.10 |  15.79|  35.99|  51.78|
 |Quadro P5000             |5.1.10 |  16.03|  36.83|  52.86|
-|GTX 1080                 |5.0.05 |  16.08|  40.08|  56.16|
+|Tesla M60                |5.1.10 |  29.46|  63.62|  93.08|
 |Quadro M4000             |5.1.05 |  40.29|  89.48| 129.77|
 |Tesla K80                |5.1.10 |  45.43| 111.21| 156.64|
 |GRID K520                |5.1.10 |  86.28| 226.87| 313.15|
@@ -75,7 +75,7 @@ This is Model D in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 |Quadro P5000             |5.1.10 |  58.16| 122.14| 180.30|
 |GTX 1080                 |5.1.05 |  59.37| 123.42| 182.79|
 |GTX 1080                 |5.1.10 |  60.27| 123.15| 183.42|
-|GTX 1080                 |5.0.05 |  67.27| 166.17| 233.43|
+|Tesla M60                |5.1.10 | 107.41| 233.42| 340.83|
 |Quadro M4000             |5.1.05 | 144.84| 299.51| 444.35|
 |Tesla K80                |5.1.10 | 153.67| 295.74| 449.40|
 |CPU: Dual Xeon E5-2630 v3|None   |3101.76|5393.72|8495.48|
@@ -93,7 +93,7 @@ This is Model E in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 |Quadro P5000             |5.1.10 |  67.68| 139.79| 207.47|
 |GTX 1080                 |5.1.10 |  69.27| 140.89| 210.16|
 |GTX 1080                 |5.1.05 |  68.95| 141.44| 210.39|
-|GTX 1080                 |5.0.05 |  79.79| 202.02| 281.81|
+|Tesla M60                |5.1.10 | 125.61| 277.30| 402.91|
 |Quadro M4000             |5.1.05 | 169.70| 347.80| 517.50|
 |Tesla K80                |5.1.10 | 179.85| 347.85| 527.69|
 |CPU: Dual Xeon E5-2630 v3|None   |3609.78|6239.45|9849.23|
@@ -111,11 +111,11 @@ This is the 18-layer model described in [[4]](#resnet-cvpr) and implemented in
 |GTX 1080                 |5.1.10 |  14.48|  29.35|  43.83|
 |GTX 1080                 |5.1.05 |  14.62|  29.32|  43.94|
 |Quadro P5000             |5.1.10 |  14.58|  29.48|  44.06|
-|GTX 1080                 |5.0.05 |  14.84|  32.68|  47.52|
+|Tesla M60                |5.1.10 |  25.89|  52.77|  78.67|
 |Quadro M4000             |5.1.05 |  35.13|  74.08| 109.21|
 |Tesla K80                |5.1.10 |  37.87|  74.88| 112.74|
 |GRID K520                |5.1.10 |  64.82| 140.53| 205.36|
-|CPU: Dual Xeon E5-2630 v3|None   | 859.70|1360.30|2220.01|
+|CPU: Dual Xeon E5-2630 v3|None   | 847.46|1348.33|2195.78|
 
 
 ## ResNet-34
@@ -129,7 +129,7 @@ This is the 34-layer model described in [[4]](#resnet-cvpr) and implemented in
 |GTX 1080                 |5.1.05 |  24.50|  47.59|  72.09|
 |GTX 1080                 |5.1.10 |  24.31|  47.86|  72.17|
 |Quadro P5000             |5.1.10 |  24.57|  48.04|  72.61|
-|GTX 1080                 |5.0.05 |  24.76|  55.00|  79.76|
+|Tesla M60                |5.1.10 |  44.07|  86.81| 130.88|
 |Quadro M4000             |5.1.05 |  59.09| 118.13| 177.22|
 |Tesla K80                |5.1.10 |  64.79| 124.24| 189.03|
 |GRID K520                |5.1.10 | 112.04| 231.02| 343.06|
@@ -147,7 +147,7 @@ This is the 50-layer model described in [[4]](#resnet-cvpr) and implemented in
 |Quadro P5000             |5.1.10 |  48.77|  98.72| 147.49|
 |GTX 1080                 |5.1.10 |  50.24|  98.41| 148.65|
 |GTX 1080                 |5.1.05 |  50.64|  99.18| 149.82|
-|GTX 1080                 |5.0.05 |  50.76| 103.35| 154.11|
+|Tesla M60                |5.1.10 |  91.89| 173.12| 265.01|
 |Quadro M4000             |5.1.05 | 117.52| 228.17| 345.69|
 |Tesla K80                |5.1.10 | 124.38| 274.43| 398.81|
 |CPU: Dual Xeon E5-2630 v3|None   |2477.61|4149.64|6627.25|
@@ -164,7 +164,7 @@ This is the 101-layer model described in [[4]](#resnet-cvpr) and implemented in
 |Quadro P5000             |5.1.10 |  75.21| 148.67| 223.88|
 |GTX 1080                 |5.1.10 |  76.92| 147.43| 224.34|
 |GTX 1080                 |5.1.05 |  77.59| 148.21| 225.80|
-|GTX 1080                 |5.0.05 |  77.39| 158.19| 235.58|
+|Tesla M60                |5.1.10 | 142.62| 257.42| 400.04|
 |Quadro M4000             |5.1.05 | 186.16| 350.82| 536.98|
 |Tesla K80                |5.1.10 | 199.41| 486.11| 685.52|
 |CPU: Dual Xeon E5-2630 v3|None   |4414.91|6891.33|11306.24|
@@ -183,7 +183,7 @@ Curiously cuDNN5.1.10 on the 8GB GTX 1080 run out of memory while previous versi
 |---|---|---:|---:|---:|
 |Quadro P5000             |5.1.10 | 106.26| 204.86| 311.13|
 |GTX 1080                 |5.1.05 | 109.32| 204.98| 314.30|
-|GTX 1080                 |5.0.05 | 109.64| 218.62| 328.26|
+|Tesla M60                |5.1.10 | 200.83| 359.60| 560.43|
 |Quadro M4000             |5.1.05 | 264.14| 482.02| 746.16|
 |Tesla K80                |5.1.10 | 283.68| 700.15| 983.83|
 |CPU: Dual Xeon E5-2630 v3|None   |6572.17|10300.61|16872.78|
@@ -208,18 +208,23 @@ the model.
 ## Citations
 
 <a id='alexnet-paper'>
-[1] Alex Krizhevsky, Ilya Sutskever, and Geoffrey E. Hinton. "ImageNet Classification with Deep Convolutional Neural Networks." NIPS 2012
+[1] Alex Krizhevsky, Ilya Sutskever, and Geoffrey E. Hinton. "ImageNet Classification with Deep Convolutional Neural Networks." NIPS 2012.
+</a>
 
 <a id='inception-v1-paper'>
 [2] Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed,
 Dragomir Anguelov, Dumitru Erhan, Andrew Rabinovich.
 "Going Deeper with Convolutions." CVPR 2015.
+</a>
 
 <a id='vgg-paper'>
-[3] Karen Simonyan and Andrew Zisserman. "Very Deep Convolutional Networks for Large-Scale Image Recognition." ICLR 2015
+[3] Karen Simonyan and Andrew Zisserman. "Very Deep Convolutional Networks for Large-Scale Image Recognition." ICLR 2015.
+</a>
 
 <a id='resnet-cvpr'>
 [4] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. "Deep Residual Learning for Image Recognition." CVPR 2016.
+</a>
 
 <a id='resnet-eccv'>
 [5] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. "Identity Mappings in Deep Residual Networks." ECCV 2016.
+</a>
