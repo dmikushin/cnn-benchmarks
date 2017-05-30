@@ -1,6 +1,6 @@
 # GPU in the Cloud | cnn-benchmarks
 
-Benchmark for GPUs available in the Computing Clouds using popular Convolutional Neural Network models. We use desktop GTX 1080 and CPU for the reference.
+Benchmark for GPUs available in the Computing Clouds using popular Convolutional Neural Network models.
 
 This benchmark is based on [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
 
@@ -13,6 +13,8 @@ We use the following GPUs (roughly sorted by performance):
 |[Quadro M4000](https://www.techpowerup.com/gpudb/2757/quadro-m4000)|[Paperspace](https://www.paperspace.com)|GPU+|8GB GDDR5|Maxwell|1664|2.57|Jun 2015|
 |[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon EC2](https://aws.amazon.com), [MS Azure](http://azure.microsoft.com/), [Google Cloud](https://cloud.google.com)|p2, NCx, K80|12GB GDDR5|Kepler|2496|2.80|Nov 2014|
 |[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon EC2](https://aws.amazon.com)|g2|4GB GDDR5|Kepler|1536|2.45|Jul 2013|
+
+We use desktop GTX 1080 and CPU for the reference.
 
 Some general conclusions from this benchmarking:
 - **Quadro P5000 == GTX 1080**: Performance of both GPUs is very close on all models. The main difference is twice more memory in server-side Quadro P5000.
