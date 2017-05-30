@@ -9,9 +9,9 @@ We use the following GPUs (roughly sorted by performance):
 |GPU|Cloud|Instance Name|Memory|Architecture|CUDA Cores|FP32 TFLOPS|Release Date|
 |---|---|---|---|---|---:|---:|---|
 |[Quadro P5000](https://www.techpowerup.com/gpudb/2864/quadro-p5000)|[Paperspace](https://www.paperspace.com)|P5000|16GB GDDRX5|Pascal|2560|8.22|Oct 2016|
-|[Tesla M60](https://www.techpowerup.com/gpudb/2760/tesla-m60)|[Azure](http://azure.microsoft.com/)|NVx|8GB GDDR5|Maxwell|2048|3.80|Aug 2015|
+|[Tesla M60](https://www.techpowerup.com/gpudb/2760/tesla-m60)|[MS Azure](http://azure.microsoft.com/)|NVx|8GB GDDR5|Maxwell|2048|3.80|Aug 2015|
 |[Quadro M4000](https://www.techpowerup.com/gpudb/2757/quadro-m4000)|[Paperspace](https://www.paperspace.com)|GPU+|8GB GDDR5|Maxwell|1664|2.57|Jun 2015|
-|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon EC2](https://aws.amazon.com), [Azure](http://azure.microsoft.com/), [Google Cloud](https://cloud.google.com)|p2, NCx, K80|12GB GDDR5|Kepler|2496|2.80|Nov 2014|
+|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon EC2](https://aws.amazon.com), [MS Azure](http://azure.microsoft.com/), [Google Cloud](https://cloud.google.com)|p2, NCx, K80|12GB GDDR5|Kepler|2496|2.80|Nov 2014|
 |[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon EC2](https://aws.amazon.com)|g2|4GB GDDR5|Kepler|1536|2.45|Jul 2013|
 
 Some general conclusions from this benchmarking:
