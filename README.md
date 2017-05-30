@@ -6,7 +6,7 @@ This benchmark is based on [jcjohnson/cnn-benchmarks](https://github.com/jcjohns
 
 We use the following GPUs (roughly sorted by performance):
 
-|GPU|Cloud|Instance Name|Memory|Architecture|CUDA Cores|FP32 TFLOPS|Release Date|
+|GPU|Cloud|Instance Name|Memory|Arch|CUDA Cores|FP32 TFLOPS|Release Date|
 |---|---|---|---|---|---:|---:|---|
 |[Quadro P5000](https://www.techpowerup.com/gpudb/2864/quadro-p5000)|[Paperspace](https://www.paperspace.com)|P5000|16GB GDDRX5|Pascal|2560|8.22|Oct 2016|
 |[Tesla M60](https://www.techpowerup.com/gpudb/2760/tesla-m60)|[MS Azure](http://azure.microsoft.com/)|NVx|8GB GDDR5|Maxwell|2048|3.80|Aug 2015|
