@@ -2,9 +2,9 @@
 
 Benchmark for GPUs available in the Computing Clouds using popular Convolutional Neural Network models. We use desktop GTX 1080 and CPU for the reference.
 
-This benchmarks is based on [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
+This benchmark is based on [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
 
-We use the following GPUs for benchmarking:
+We use the following GPUs:
 
 |GPU|Cloud|Instance Name|Memory|Architecture|CUDA Cores|FP32 TFLOPS|Release Date|
 |---|---|---|---|---|---:|---:|---|
