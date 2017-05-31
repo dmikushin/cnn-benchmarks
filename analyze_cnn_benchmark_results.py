@@ -33,9 +33,9 @@ gpu_name_map = {
 # Matches order in README.md
 model_names_sorted = [
   'alexnet',
+  'googlenet-v1',
   'vgg16',
   'vgg19',
-  'googlenet-v1',
   'resnet-18',
   'resnet-34',
   'resnet-50',
