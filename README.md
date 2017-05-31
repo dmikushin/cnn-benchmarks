@@ -14,7 +14,7 @@ We use the following GPUs (roughly sorted by performance):
 |[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon EC2](https://aws.amazon.com), [MS Azure](http://azure.microsoft.com/), [Google Cloud](https://cloud.google.com)|p2, NCx, K80|12GB GDDR5|Kepler|2496|2.80|Nov 2014|
 |[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon EC2](https://aws.amazon.com)|g2|4GB GDDR5|Kepler|1536|2.45|Jul 2013|
 
-We use desktop GTX 1080 and CPU for the reference.
+We use desktop GTX 1080 GPU and Xeon E5-2666v3 CPU (available on AWS EC2 cloud as c4.4xlarge instance) for the reference.
 
 Some general conclusions from this benchmarking:
 - **Quadro P5000 == GTX 1080**: Performance of both GPUs is very close on all models. The main difference is twice more memory in server-side Quadro P5000.
@@ -64,6 +64,7 @@ We use the Torch implementation of Inception-V1 from
 |Quadro M4000             |5.1.05 |  40.29|  89.48| 129.77|
 |Tesla K80                |5.1.10 |  45.43| 111.21| 156.64|
 |GRID K520                |5.1.10 |  86.28| 226.87| 313.15|
+|CPU: Dual Xeon E5-2666 v3|None   |1569.44|1904.28|3473.72|
 
 
 ## VGG-16
@@ -80,7 +81,8 @@ This is Model D in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 |Tesla M60                |5.1.10 | 107.41| 233.42| 340.83|
 |Quadro M4000             |5.1.05 | 144.84| 299.51| 444.35|
 |Tesla K80                |5.1.10 | 153.67| 295.74| 449.40|
-|CPU: Dual Xeon E5-2630 v3|None   |3101.76|5393.72|8495.48|
+|GRID K520                |None   | 675.96|1937.51|2613.48|
+|CPU: Dual Xeon E5-2666 v3|None   |2648.97|4788.71|7437.69|
 
 
 ## VGG-19
@@ -98,8 +100,8 @@ This is Model E in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 |Tesla M60                |5.1.10 | 125.61| 277.30| 402.91|
 |Quadro M4000             |5.1.05 | 169.70| 347.80| 517.50|
 |Tesla K80                |5.1.10 | 179.85| 347.85| 527.69|
-|CPU: Dual Xeon E5-2630 v3|None   |3609.78|6239.45|9849.23|
-
+|GRID K520                |None   | 826.84|2275.49|3102.33|
+|CPU: Dual Xeon E5-2666 v3|None   |3119.22|5684.74|8803.97|
 
 
 ## ResNet-18
@@ -117,7 +119,7 @@ This is the 18-layer model described in [[4]](#resnet-cvpr) and implemented in
 |Quadro M4000             |5.1.05 |  35.13|  74.08| 109.21|
 |Tesla K80                |5.1.10 |  37.87|  74.88| 112.74|
 |GRID K520                |5.1.10 |  64.82| 140.53| 205.36|
-|CPU: Dual Xeon E5-2630 v3|None   | 847.46|1348.33|2195.78|
+|CPU: Dual Xeon E5-2666 v3|None   | 606.22|1176.15|1782.37|
 
 
 ## ResNet-34
@@ -135,7 +137,7 @@ This is the 34-layer model described in [[4]](#resnet-cvpr) and implemented in
 |Quadro M4000             |5.1.05 |  59.09| 118.13| 177.22|
 |Tesla K80                |5.1.10 |  64.79| 124.24| 189.03|
 |GRID K520                |5.1.10 | 112.04| 231.02| 343.06|
-|CPU: Dual Xeon E5-2630 v3|None   |1530.01|2435.20|3965.21|
+|CPU: Dual Xeon E5-2666 v3|None   | 720.24|1317.49|2037.72|
 
 
 ## ResNet-50
@@ -152,7 +154,7 @@ This is the 50-layer model described in [[4]](#resnet-cvpr) and implemented in
 |Tesla M60                |5.1.10 |  91.89| 173.12| 265.01|
 |Quadro M4000             |5.1.05 | 117.52| 228.17| 345.69|
 |Tesla K80                |5.1.10 | 124.38| 274.43| 398.81|
-|CPU: Dual Xeon E5-2630 v3|None   |2477.61|4149.64|6627.25|
+|CPU: Dual Xeon E5-2666 v3|None   |1623.35|3042.77|4666.12|
 
 
 ## ResNet-101
@@ -169,7 +171,7 @@ This is the 101-layer model described in [[4]](#resnet-cvpr) and implemented in
 |Tesla M60                |5.1.10 | 142.62| 257.42| 400.04|
 |Quadro M4000             |5.1.05 | 186.16| 350.82| 536.98|
 |Tesla K80                |5.1.10 | 199.41| 486.11| 685.52|
-|CPU: Dual Xeon E5-2630 v3|None   |4414.91|6891.33|11306.24|
+|CPU: Dual Xeon E5-2666 v3|None   |1946.84|3458.39|5405.23|
 
 
 
@@ -188,7 +190,7 @@ Curiously cuDNN5.1.10 on the 8GB GTX 1080 run out of memory while previous versi
 |Tesla M60                |5.1.10 | 200.83| 359.60| 560.43|
 |Quadro M4000             |5.1.05 | 264.14| 482.02| 746.16|
 |Tesla K80                |5.1.10 | 283.68| 700.15| 983.83|
-|CPU: Dual Xeon E5-2630 v3|None   |6572.17|10300.61|16872.78|
+|CPU: Dual Xeon E5-2666 v3|None   |3742.47|6980.75|10723.22|
 
 
 ## ResNet-200
@@ -204,7 +206,7 @@ the model.
 |---|---|---:|---:|---:|
 |Quadro P5000             |5.1.10 | 146.78| 275.36| 422.14|
 |Tesla K80                |5.1.10 | 385.33| 904.29|1289.63|
-|CPU: Dual Xeon E5-2630 v3|None   |8666.43|13758.73|22425.16|
+|CPU: Dual Xeon E5-2666 v3|None   |5298.52|9668.13|14966.64|
 
 
 ## Citations
