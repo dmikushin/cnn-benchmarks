@@ -17,9 +17,10 @@ We use the following GPUs (roughly sorted by performance):
 We use desktop GTX 1080 GPU and Xeon E5-2666v3 CPU (available on AWS EC2 cloud as c4.4xlarge instance) for the reference.
 
 Some general conclusions from this benchmarking:
-- **P5000 == GTX 1080**: Performance of both GPUs is very close on all models. The main difference is twice more memory in server-side Quadro P5000.
+- **P5000 == GTX 1080**: Performance of both GPUs is very close on all models. The main difference is twice more memory in the server-side Quadro P5000.
+- **P5000 and K80 for large models**: Quadro P5000 and Tesla K80 have enough memory for the most of the tasks, 16GB and 12GB respectively.
 - **P5000 > M60**: Across all models, the Quadro P5000 is **1.75x to 2.0x** faster.
-- **M60 > M40000**: Across all models, the Tesla M60 is **1.1x to 1.25x** faster.
+- **M60 > M4000**: Across all models, the Tesla M60 is **1.1x to 1.25x** faster.
 - **M4000 > K80**: Across all models, the Quadro M4000 is only slighly (1.05x to 1.25x) faster than Tesla K80, but has less memory.
 - **K80 > K520**: Across all models, the Tesla K80 is **1.8 to 2.25** faster than GRID K520.
 - **Prefer latest cuDNN**: cuDNN5.1.10 is slightly faster than 5.1.05 which in turn is faster than 5.0.05. However at least one caveat was noticed with cuDNN5.1.10 - 8GB GTX 1080 failed on [ResNet-152](#resnet-152) while previous cuDNN versions run the model fine.
