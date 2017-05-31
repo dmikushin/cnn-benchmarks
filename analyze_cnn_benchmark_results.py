@@ -26,6 +26,8 @@ gpu_name_map = {
   'GeForce GTX TITAN X': 'Maxwell Titan X',
   'GeForce GTX 1080': 'GTX 1080',
   'GeForce GTX 1080 Ti': 'GTX 1080 Ti',
+
+  'c4.4xlarge': 'CPU: Dual Xeon E5-2666 v3',
   'cpu': 'CPU: Dual Xeon E5-2630 v3',
 }
 
