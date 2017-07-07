@@ -9,9 +9,9 @@ We use the following GPUs (roughly sorted by performance):
 |GPU|Cloud|Instance Name|Arch|CUDA Cores|FP32 TFLOPS|Memory GB|Bandwidth GB/s|Release Date|
 |---|---|---|---|---:|---:|---:|---:|---|
 |[Quadro P5000](https://www.techpowerup.com/gpudb/2864/quadro-p5000)|[Paperspace](https://www.paperspace.com)|P5000 |Pascal|2560|8.87|16|288.3|Oct 2016|
-|[Tesla M60](https://www.techpowerup.com/gpudb/2760/tesla-m60)| [MS_Azure](http://azure.microsoft.com/), <br> [IBM_Bluemix](http://bluemix.net)|NVx, <br> M60|Maxwell|2048|4.83|8|160.4|Aug 2015|
+|[Tesla M60](https://www.techpowerup.com/gpudb/2760/tesla-m60)| [MS_Azure](http://azure.microsoft.com/) <br> [IBM_Bluemix](http://bluemix.net)|NVx <br> M60|Maxwell|2048|4.83|8|160.4|Aug 2015|
 |[Quadro M4000](https://www.techpowerup.com/gpudb/2757/quadro-m4000)|[Paperspace](https://www.paperspace.com)|GPU+|Maxwell|1664|2.57|8|192.3|Jun 2015|
-|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon_EC2](https://aws.amazon.com), <br> [MS_Azure](http://azure.microsoft.com/), <br> [Google_Cloud](https://cloud.google.com), <br> [IBM_Bluemix](http://bluemix.net)|p2, <br> NCx, <br> K80, <br> K80|Kepler|2496|4.37(?)|12|240.6|Nov 2014|
+|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon_EC2](https://aws.amazon.com) <br> [MS_Azure](http://azure.microsoft.com/) <br> [Google_Cloud](https://cloud.google.com) <br> [IBM_Bluemix](http://bluemix.net)|p2 <br> NCx <br> K80 <br> K80|Kepler|2496|4.37(?)|12|240.6|Nov 2014|
 |[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon_EC2](https://aws.amazon.com)|g2|Kepler|1536|2.45|4|160.0|Jul 2013|
 
 We use desktop GTX 1080 GPU and Xeon E5-2666v3 CPU (available on AWS EC2 cloud as c4.4xlarge instance) for the reference.
