@@ -25,7 +25,7 @@ Some general conclusions from this benchmarking:
 - **P5000 > M60**: Across all models, the Quadro P5000 is **1.75x to 2x** faster than Tesla M60.
 - **M60 > K80**: Across all models, the Tesla M60 is **1.3x to 1.75x** faster than Tesla K80.
 - **K80 > K520**: Across all models, the Tesla K80 is **1.8x to 2.25x** faster than GRID K520.
-- **Prefer latest cuDNN**: cuDNN5.1.10 is slightly faster than 5.1.05 which in turn is faster than 5.0.05. However at least one caveat was noticed with cuDNN5.1.10 - 8GB GTX 1080 failed on [ResNet-152](#resnet-152) while previous cuDNN versions run the model fine.
+- **Prefer latest cuDNN**: cuDNN5.1.10 is slightly faster than 5.1.05 which in turn is faster than 5.0.05.
 
 All benchmarks were run in Torch, Ubuntu 14.04 with the CUDA 8.0 Release Candidate.
 
