@@ -15,12 +15,13 @@ We use the following GPUs (roughly sorted by performance):
 |[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon_EC2](https://aws.amazon.com) <br> [MS_Azure](http://azure.microsoft.com/) <br> [Google_Cloud](https://cloud.google.com) <br> [IBM_Bluemix](http://bluemix.net)|p2 <br> NCx <br> K80 <br> K80|Kepler|2496|4.37(?)|12|240.6|Nov 2014|
 |[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon_EC2](https://aws.amazon.com)|g2|Kepler|1536|2.45|4|160.0|Jul 2013|
 
-We use desktop GTX 1080 GPU and Xeon E5-2666v3 CPU (available on AWS EC2 cloud as c4.4xlarge instance) for the reference.
+We use desktop GTX 1080 Ti GPU and Xeon E5-2666v3 CPU (available on AWS EC2 cloud as c4.4xlarge instance) for the reference.
 
 Some general conclusions from this benchmarking:
-- **P6000 is the fastest GPU**: Across all models, the Quadro P6000 is **1.3x to 1.65x** faster than Quadro P5000.
-- **P5000 == GTX 1080**: Performance of both GPUs is very close on all models. The main difference is twice more memory in the server-side Quadro P5000.
+- **P6000 and (most likely) P100 are the fastest cards you can get for deep learning in the cloud right now.**
+- **P6000 == GTX 1080 Ti** and **P5000 == GTX 1080**: Performance of both pairs of GPUs are very close on all models. The main difference is significantly more memory in the server-side Quadros.
 - **P6000, P5000 and K80 for large models**: Quadro P5000 and Tesla K80 have enough memory for the most of the tasks: 24GB, 16GB and 12GB respectively.
+- **P6000 > P5000**: Across all models, the Quadro P6000 is **1.3x to 1.65x** faster than Quadro P5000.
 - **P5000 > M60**: Across all models, the Quadro P5000 is **1.75x to 2x** faster than Tesla M60.
 - **M60 > K80**: Across all models, the Tesla M60 is **1.3x to 1.75x** faster than Tesla K80.
 - **K80 > K520**: Across all models, the Tesla K80 is **1.8x to 2.25x** faster than GRID K520.
@@ -45,9 +46,8 @@ benchmark AlexNet using cuDNN.
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
 |Quadro P6000             |5.1.10 |   3.86|   7.98|  11.84|
+|GTX 1080 Ti              |5.1.10 |   4.31|   9.58|  13.89|
 |Quadro P5000             |5.1.10 |   5.91|  13.68|  19.58|
-|GTX 1080                 |5.1.10 |   5.97|  13.87|  19.84|
-|GTX 1080                 |5.1.05 |   7.00|  13.74|  20.74|
 |Tesla M60                |5.1.10 |  10.79|  24.53|  35.32|
 |Quadro M4000             |5.1.05 |  14.23|  29.52|  43.75|
 |Tesla K80                |5.1.10 |  15.98|  31.63|  47.61|
@@ -62,8 +62,8 @@ We use the Torch implementation of Inception-V1 from
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|GTX 1080 Ti              |5.1.10 |  11.50|  25.37|  36.87|
 |Quadro P6000             |5.1.10 |  11.87|  27.88|  39.75|
-|GTX 1080                 |5.1.10 |  15.79|  35.99|  51.78|
 |Quadro P5000             |5.1.10 |  16.03|  36.83|  52.86|
 |Tesla M60                |5.1.10 |  29.46|  63.62|  93.08|
 |Quadro M4000             |5.1.05 |  40.29|  89.48| 129.77|
@@ -80,9 +80,8 @@ This is Model D in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
 |Quadro P6000             |5.1.10 |  38.66|  83.38| 122.04|
+|GTX 1080 Ti              |5.1.10 |  41.23|  86.91| 128.14|
 |Quadro P5000             |5.1.10 |  58.16| 122.14| 180.30|
-|GTX 1080                 |5.1.05 |  59.37| 123.42| 182.79|
-|GTX 1080                 |5.1.10 |  60.27| 123.15| 183.42|
 |Tesla M60                |5.1.10 | 107.41| 233.42| 340.83|
 |Quadro M4000             |5.1.05 | 144.84| 299.51| 444.35|
 |Tesla K80                |5.1.10 | 153.67| 295.74| 449.40|
@@ -100,9 +99,8 @@ This is Model E in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
 |Quadro P6000             |5.1.10 |  45.59|  96.97| 142.56|
+|GTX 1080 Ti              |5.1.10 |  48.15| 100.04| 148.19|
 |Quadro P5000             |5.1.10 |  67.68| 139.79| 207.47|
-|GTX 1080                 |5.1.10 |  69.27| 140.89| 210.16|
-|GTX 1080                 |5.1.05 |  68.95| 141.44| 210.39|
 |Tesla M60                |5.1.10 | 125.61| 277.30| 402.91|
 |Quadro M4000             |5.1.05 | 169.70| 347.80| 517.50|
 |Tesla K80                |5.1.10 | 179.85| 347.85| 527.69|
@@ -119,8 +117,7 @@ This is the 18-layer model described in [[4]](#resnet-cvpr) and implemented in
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
 |Quadro P6000             |5.1.10 |  10.06|  21.52|  31.58|
-|GTX 1080                 |5.1.10 |  14.48|  29.35|  43.83|
-|GTX 1080                 |5.1.05 |  14.62|  29.32|  43.94|
+|GTX 1080 Ti              |5.1.10 |  10.45|  22.34|  32.78|
 |Quadro P5000             |5.1.10 |  14.58|  29.48|  44.06|
 |Tesla M60                |5.1.10 |  25.89|  52.77|  78.67|
 |Quadro M4000             |5.1.05 |  35.13|  74.08| 109.21|
@@ -137,9 +134,8 @@ This is the 34-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|GTX 1080 Ti              |5.1.10 |  16.71|  34.60|  51.31|
 |Quadro P6000             |5.1.10 |  17.11|  35.35|  52.46|
-|GTX 1080                 |5.1.05 |  24.50|  47.59|  72.09|
-|GTX 1080                 |5.1.10 |  24.31|  47.86|  72.17|
 |Quadro P5000             |5.1.10 |  24.57|  48.04|  72.61|
 |Tesla M60                |5.1.10 |  44.07|  86.81| 130.88|
 |Quadro M4000             |5.1.05 |  59.09| 118.13| 177.22|
@@ -156,10 +152,9 @@ This is the 50-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|GTX 1080 Ti              |5.1.10 |  34.14|  67.06| 101.21|
 |Quadro P6000             |5.1.10 |  34.02|  68.76| 102.78|
 |Quadro P5000             |5.1.10 |  48.77|  98.72| 147.49|
-|GTX 1080                 |5.1.10 |  50.24|  98.41| 148.65|
-|GTX 1080                 |5.1.05 |  50.64|  99.18| 149.82|
 |Tesla M60                |5.1.10 |  91.89| 173.12| 265.01|
 |Quadro M4000             |5.1.05 | 117.52| 228.17| 345.69|
 |Tesla K80                |5.1.10 | 124.38| 274.43| 398.81|
@@ -174,10 +169,9 @@ This is the 101-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|GTX 1080 Ti              |5.1.10 |  52.18| 102.08| 154.26|
 |Quadro P6000             |5.1.10 |  52.29| 104.49| 156.78|
 |Quadro P5000             |5.1.10 |  75.21| 148.67| 223.88|
-|GTX 1080                 |5.1.10 |  76.92| 147.43| 224.34|
-|GTX 1080                 |5.1.05 |  77.59| 148.21| 225.80|
 |Tesla M60                |5.1.10 | 142.62| 257.42| 400.04|
 |Quadro M4000             |5.1.05 | 186.16| 350.82| 536.98|
 |Tesla K80                |5.1.10 | 199.41| 486.11| 685.52|
@@ -191,13 +185,11 @@ This is the 101-layer model described in [[4]](#resnet-cvpr) and implemented in
 This is the 152-layer model described in [[4]](#resnet-cvpr) and implemented in 
 [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch).
 
-Curiously cuDNN5.1.10 on the 8GB GTX 1080 run out of memory while previous versions of cuDNN managed to run the model fine.
-
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|GTX 1080 Ti              |5.1.10 |  73.52| 142.02| 215.54|
 |Quadro P6000             |5.1.10 |  73.81| 145.04| 218.85|
 |Quadro P5000             |5.1.10 | 106.26| 204.86| 311.13|
-|GTX 1080                 |5.1.05 | 109.32| 204.98| 314.30|
 |Tesla M60                |5.1.10 | 200.83| 359.60| 560.43|
 |Quadro M4000             |5.1.05 | 264.14| 482.02| 746.16|
 |Tesla K80                |5.1.10 | 283.68| 700.15| 983.83|
@@ -210,7 +202,7 @@ Curiously cuDNN5.1.10 on the 8GB GTX 1080 run out of memory while previous versi
 This is the 200-layer model described in [[5]](#resnet-eccv) and implemented in 
 [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch).
 
-Even with a batch size of 16, the 8GB GTX 1080, M4000 and K520 did not have enough memory to run
+Even with a batch size of 16, the 8GB GTX 1080 Ti, M4000 and K520 did not have enough memory to run
 the model.
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
