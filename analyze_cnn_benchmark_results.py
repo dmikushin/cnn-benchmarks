@@ -1,3 +1,4 @@
+from __future__ import print_function
 import json, os, argparse, itertools, math
 from collections import defaultdict
 
@@ -77,10 +78,10 @@ def main(args):
     all_values['model'].add(model)
     all_values['input_size'].add(input_size)
   
-  for k, vs in all_values.iteritems():
-    print k
+  for k, vs in all_values.items():
+    print(k)
     for v in vs:
-      print '  %s' % v
+      print('  %s' % v)
   
   markdown_tables = []
 
@@ -128,9 +129,9 @@ def main(args):
       markdown_tables.append((model_batch_str, table_lines))
 
   for model, table_lines in markdown_tables:
-    print model
+    print(model)
     for line in table_lines:
-      print line
+      print(line)
     print
 
 

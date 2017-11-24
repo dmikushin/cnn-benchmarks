@@ -1,5 +1,5 @@
+from __future__ import print_function
 import os, json, itertools, random, argparse
-
 
 DEFAULT_MODELS = ','.join([
   'models/alexnet.t7',
@@ -49,10 +49,10 @@ def main(args):
     output_jsons.add(lua_args['output_json'])
 
     command = base_command
-    for k, v in lua_args.iteritems():
+    for k, v in lua_args.items():
       command = '%s -%s %s' % (command, k, v)
 
-    print command
+    print(command)
     os.system(command)
 
 
