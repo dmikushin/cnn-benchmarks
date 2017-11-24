@@ -34,7 +34,7 @@ V100 benchmarks were run on Ubuntu 16.04.
 
 All settings and models are exactly the same as in the [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
 
-
+See [template shell script](#template-shell-recipe) below to help with downloading the [model weights](https://drive.google.com/open?id=0Byvt-AfX75o1STUxZTFpMU10djA) and running the benchmark.
 
 ## AlexNet
 (input 16 x 3 x 224 x 224)
@@ -225,6 +225,22 @@ the model.
 |Tesla K80                |5.1.10 | 385.33| 904.29|1289.63|
 |CPU: Dual Xeon E5-2666 v3|None   |5298.52|9668.13|14966.64|
 
+
+## Template shell recipe
+
+Template shell script to download the model weights, run the benchmark and format results:
+
+```bash
+sudo apt install golang-go
+export GOPATH=/home/%USER%
+go get github.com/prasmussen/gdrive
+git clone https://github.com/rejunity/cnn-benchmarks.git
+cd cnn-benchmarks
+gdrive download 0Byvt-AfX75o1STUxZTFpMU10djA
+unzip models.zip 
+python run_cnn_benchmarks.py --output_dir outputs/%GPU%_cudnn%CUDNN_VERSION%
+python analyze_cnn_benchmark_results.py
+```
 
 ## Citations
 
