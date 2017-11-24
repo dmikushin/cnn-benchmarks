@@ -41,11 +41,6 @@ See [template shell script](#template-shell-recipe) below to help with downloadi
 
 We use the [BVLC AlexNet](https://github.com/BVLC/caffe/tree/master/models/bvlc_alexnet) from Caffe.
 
-AlexNet uses grouped convolutions; this was a strategy to allow model parallelism over two GTX 580
-GPUs, which had only 3GB of memory each. Grouped convolutions are no longer commonly used, and are
-not even implemented by the [torch/nn](https://github.com/torch/nn) backend; therefore we can only
-benchmark AlexNet using cuDNN.
-
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
 |Tesla V100               |7.0.04 |   3.18|   6.66|   9.85|
@@ -244,24 +239,24 @@ python analyze_cnn_benchmark_results.py
 
 ## Citations
 
-<a id='alexnet-paper'>
+<p id='alexnet-paper'>
 [1] Alex Krizhevsky, Ilya Sutskever, and Geoffrey E. Hinton. "ImageNet Classification with Deep Convolutional Neural Networks." NIPS 2012.
-</a>
+</p>
 
-<a id='inception-v1-paper'>
+<p id='inception-v1-paper'>
 [2] Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed,
 Dragomir Anguelov, Dumitru Erhan, Andrew Rabinovich.
 "Going Deeper with Convolutions." CVPR 2015.
-</a>
+</p>
 
-<a id='vgg-paper'>
+<p id='vgg-paper'>
 [3] Karen Simonyan and Andrew Zisserman. "Very Deep Convolutional Networks for Large-Scale Image Recognition." ICLR 2015.
-</a>
+</p>
 
-<a id='resnet-cvpr'>
+<p id='resnet-cvpr'>
 [4] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. "Deep Residual Learning for Image Recognition." CVPR 2016.
-</a>
+</p>
 
-<a id='resnet-eccv'>
+<p id='resnet-eccv'>
 [5] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. "Identity Mappings in Deep Residual Networks." ECCV 2016.
-</a>
+</p>
