@@ -8,26 +8,29 @@ We use the following GPUs (roughly sorted by performance):
 
 |GPU|Cloud|Instance Name|Arch|CUDA Cores|FP32 TFLOPS|Memory GB|Bandwidth GB/s|Release Date|
 |---|---|---|---|---:|---:|---:|---:|---|
+|[Tesla V100](https://www.techpowerup.com/gpudb/3018/tesla-v100-smx2)|[Amazon_EC2](https://aws.amazon.com) <br> [Paperspace](https://www.paperspace.com)|P3 <br> V100 |Volta|5120|14.03|16|900.1|Jun 2017|
 |[Quadro P6000](https://www.techpowerup.com/gpudb/2865/quadro-p6000)|[Paperspace](https://www.paperspace.com)|P6000 |Pascal|3840|12.63|24|432.8|Oct 2016|
 |[Quadro P5000](https://www.techpowerup.com/gpudb/2864/quadro-p5000)|[Paperspace](https://www.paperspace.com)|P5000 |Pascal|2560|8.87|16|288.3|Oct 2016|
-|[Tesla M60](https://www.techpowerup.com/gpudb/2760/tesla-m60)| [MS_Azure](http://azure.microsoft.com/) <br> [IBM_Bluemix](http://bluemix.net)|NVx <br> M60|Maxwell|2048|4.83|8|160.4|Aug 2015|
+|[Tesla M60](https://www.techpowerup.com/gpudb/2760/tesla-m60)| [Amazon_EC2](https://aws.amazon.com) <br> [MS_Azure](http://azure.microsoft.com/) <br> [IBM_Bluemix](http://bluemix.net)|G3 <br> NVx <br> M60|Maxwell|2048|4.83|8|160.4|Aug 2015|
 |[Quadro M4000](https://www.techpowerup.com/gpudb/2757/quadro-m4000)|[Paperspace](https://www.paperspace.com)|GPU+|Maxwell|1664|2.57|8|192.3|Jun 2015|
-|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon_EC2](https://aws.amazon.com) <br> [MS_Azure](http://azure.microsoft.com/) <br> [Google_Cloud](https://cloud.google.com) <br> [IBM_Bluemix](http://bluemix.net)|p2 <br> NCx <br> K80 <br> K80|Kepler|2496|4.37(?)|12|240.6|Nov 2014|
-|[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon_EC2](https://aws.amazon.com)|g2|Kepler|1536|2.45|4|160.0|Jul 2013|
+|[Tesla K80](https://www.techpowerup.com/gpudb/2616/tesla-k80m)|[Amazon_EC2](https://aws.amazon.com) <br> [MS_Azure](http://azure.microsoft.com/) <br> [Google_Cloud](https://cloud.google.com) <br> [IBM_Bluemix](http://bluemix.net)|P2 <br> NCx <br> K80 <br> K80|Kepler|2496|4.37(?)|12|240.6|Nov 2014|
+|[GRID K520](https://www.techpowerup.com/gpudb/2312/grid-k520)|[Amazon_EC2](https://aws.amazon.com)|G2|Kepler|1536|2.45|4|160.0|Jul 2013|
 
 We use desktop GTX 1080 Ti GPU and Xeon E5-2666v3 CPU (available on AWS EC2 cloud as c4.4xlarge instance) for the reference.
 
 Some general conclusions from this benchmarking:
-- **P6000 and (most likely) P100 are the fastest cards you can get for deep learning in the cloud right now.**
+- **V100 is the FASTEST card you can get for deep learning in the cloud right now!**
 - **P6000 == GTX 1080 Ti** and **P5000 == GTX 1080**: Performance of both pairs of GPUs are very close on all models. The main difference is significantly more memory in the server-side Quadros.
 - **P6000, P5000 and K80 for large models**: Quadro P5000 and Tesla K80 have enough memory for the most of the tasks: 24GB, 16GB and 12GB respectively.
+- **V100 > P6000**: Across all models, the Tesla V100 is **1.3x to 1.6x** faster than Quadro P6000 and GTX 1080 Ti.
 - **P6000 > P5000**: Across all models, the Quadro P6000 is **1.3x to 1.65x** faster than Quadro P5000.
 - **P5000 > M60**: Across all models, the Quadro P5000 is **1.75x to 2x** faster than Tesla M60.
 - **M60 > K80**: Across all models, the Tesla M60 is **1.3x to 1.75x** faster than Tesla K80.
 - **K80 > K520**: Across all models, the Tesla K80 is **1.8x to 2.25x** faster than GRID K520.
 - **Prefer latest cuDNN**: cuDNN5.1.10 is slightly faster than 5.1.05 which in turn is faster than 5.0.05.
 
-All benchmarks were run in Torch, Ubuntu 14.04 with the CUDA 8.0 Release Candidate.
+All benchmarks except V100 were run in Torch, Ubuntu 14.04 with the CUDA 8.0 Release Candidate.
+V100 benchmarks were run on Ubuntu 16.04.
 
 All settings and models are exactly the same as in the [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
 
@@ -45,6 +48,7 @@ benchmark AlexNet using cuDNN.
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |   3.18|   6.66|   9.85|
 |Quadro P6000             |5.1.10 |   3.86|   7.98|  11.84|
 |GTX 1080 Ti              |5.1.10 |   4.31|   9.58|  13.89|
 |Quadro P5000             |5.1.10 |   5.91|  13.68|  19.58|
@@ -62,6 +66,7 @@ We use the Torch implementation of Inception-V1 from
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |   7.90|  20.41|  28.31|
 |GTX 1080 Ti              |5.1.10 |  11.50|  25.37|  36.87|
 |Quadro P6000             |5.1.10 |  11.87|  27.88|  39.75|
 |Quadro P5000             |5.1.10 |  16.03|  36.83|  52.86|
@@ -79,6 +84,7 @@ This is Model D in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |  23.76|  52.69|  76.45|
 |Quadro P6000             |5.1.10 |  38.66|  83.38| 122.04|
 |GTX 1080 Ti              |5.1.10 |  41.23|  86.91| 128.14|
 |Quadro P5000             |5.1.10 |  58.16| 122.14| 180.30|
@@ -98,6 +104,7 @@ This is Model E in [[3]](#vgg-paper) used in the ILSVRC-2014 competition,
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |  27.73|  60.24|  87.97|
 |Quadro P6000             |5.1.10 |  45.59|  96.97| 142.56|
 |GTX 1080 Ti              |5.1.10 |  48.15| 100.04| 148.19|
 |Quadro P5000             |5.1.10 |  67.68| 139.79| 207.47|
@@ -116,6 +123,7 @@ This is the 18-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |   6.16|  14.16|  20.32|
 |Quadro P6000             |5.1.10 |  10.06|  21.52|  31.58|
 |GTX 1080 Ti              |5.1.10 |  10.45|  22.34|  32.78|
 |Quadro P5000             |5.1.10 |  14.58|  29.48|  44.06|
@@ -134,6 +142,7 @@ This is the 34-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |  10.14|  22.37|  32.51|
 |GTX 1080 Ti              |5.1.10 |  16.71|  34.60|  51.31|
 |Quadro P6000             |5.1.10 |  17.11|  35.35|  52.46|
 |Quadro P5000             |5.1.10 |  24.57|  48.04|  72.61|
@@ -152,6 +161,7 @@ This is the 50-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |  19.83|  46.26|  66.09|
 |GTX 1080 Ti              |5.1.10 |  34.14|  67.06| 101.21|
 |Quadro P6000             |5.1.10 |  34.02|  68.76| 102.78|
 |Quadro P5000             |5.1.10 |  48.77|  98.72| 147.49|
@@ -169,6 +179,7 @@ This is the 101-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |  31.64|  82.11| 113.75|
 |GTX 1080 Ti              |5.1.10 |  52.18| 102.08| 154.26|
 |Quadro P6000             |5.1.10 |  52.29| 104.49| 156.78|
 |Quadro P5000             |5.1.10 |  75.21| 148.67| 223.88|
@@ -187,6 +198,7 @@ This is the 152-layer model described in [[4]](#resnet-cvpr) and implemented in
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |  44.80| 117.58| 162.37|
 |GTX 1080 Ti              |5.1.10 |  73.52| 142.02| 215.54|
 |Quadro P6000             |5.1.10 |  73.81| 145.04| 218.85|
 |Quadro P5000             |5.1.10 | 106.26| 204.86| 311.13|
@@ -207,6 +219,7 @@ the model.
 
 |GPU|cuDNN|Forward (ms)|Backward (ms)|Total (ms)|
 |---|---|---:|---:|---:|
+|Tesla V100               |7.0.04 |  59.68| 149.26| 208.94|
 |Quadro P6000             |5.1.10 | 102.36| 194.93| 297.29|
 |Quadro P5000             |5.1.10 | 146.78| 275.36| 422.14|
 |Tesla K80                |5.1.10 | 385.33| 904.29|1289.63|
