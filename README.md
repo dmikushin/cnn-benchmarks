@@ -29,6 +29,33 @@ Some general conclusions from this benchmarking:
 - **K80 > K520**: Across all models, the Tesla K80 is **1.8x to 2.25x** faster than GRID K520.
 - **Prefer latest cuDNN**: cuDNN5.1.10 is slightly faster than 5.1.05 which in turn is faster than 5.0.05.
 
+The effect of varying minibatch size with [VGG-19](#vgg-19) when run on Tesla V100:
+
+|Batch size|Forward (ms)|Backward (ms)|Total (ms)|Speedup (forward)| Speedup (total)|
+|---|---:|---:|---:|---:|---:|
+|1	|5.57	|11.29	|16.85	  |1.0x|1.0x|
+|2	|8.68	|14.18	|22.86	  |1.3x|1.5x|
+|4	|14.11	|23.23	|37.34	|1.6x|1.8x|
+|8	|21.87	|38.62	|60.50	|2.0x|2.2x|
+|**16**	|27.73	|60.24	|87.97	|**3.2x**|**3.1x**|
+|32	|51.54	|115.23	|166.77	|3.5x|3.2x|
+|64	|101.69	|225.78	|327.46	|3.5x|3.3x|
+
+The effect of varying minibatch size with [ResNet-34](#resnet-34) when run on Tesla V100:
+
+|Batch size|Forward (ms)|Backward (ms)|Total (ms)|Speedup (forward)| Speedup (total)|
+|---|---:|---:|---:|---:|---:|
+|1	|3.29	|5.45	|8.74		    |1.0x|1.0x|
+|2	|5.52	|8.19	|13.71		  |1.2x|1.3x|
+|4	|5.52	|8.19	|13.71		  |2.4x|2.5x|
+|8	|7.92	|14.82	|22.74		|3.3x|3.1x|
+|**16**	|10.14	|22.37	|32.51		|**5.2x**|**4.3x**|
+|32	|17.58	|38.84	|56.43  |6.0x|5.0x|
+|64	|33.74	|74.76	|108.50	|6.2x|5.2x|
+
+Following we benchmark all models with a minibatch size of 16 and an image size of 224 x 224; this allows large models to run on cards with 8GB of memory.
+
+
 All benchmarks except V100 were run in Torch, Ubuntu 14.04 with the CUDA 8.0 Release Candidate.
 V100 benchmarks were run on Ubuntu 16.04.
 
