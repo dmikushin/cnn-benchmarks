@@ -4,6 +4,43 @@ Benchmark for GPUs available in the Computing Clouds using popular Convolutional
 
 This benchmark is based on [jcjohnson/cnn-benchmarks](https://github.com/jcjohnson/cnn-benchmarks).
 
+## Benchmarking your system
+
+Install recent CUDA and cuDNN. Make sure CUBLAS is also installed (in recent versions of CUDA it is packaged separately).
+
+Download the model weights:
+
+```bash
+sudo add-apt-repository ppa:longsleep/golang-backports -y
+sudo apt-get update
+sudo apt-get install golang-go
+export GOPATH=/home/%USER%
+go get github.com/prasmussen/gdrive
+git clone https://github.com/rejunity/cnn-benchmarks.git
+cd cnn-benchmarks
+bin/gdrive download 0Byvt-AfX75o1STUxZTFpMU10djA
+unzip models.zip
+```
+
+Prepare Torch installation:
+
+```
+./clean.sh
+export TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__"
+./install.sh
+```
+
+Run the benchmark and format the results:
+
+```
+export GPU=$(nvidia-smi --query-gpu="gpu_name" --format=csv,noheader -i 0)
+git clone https://github.com/torch/distro.git torch --recursive
+python run_cnn_benchmarks.py --output_dir outputs/%GPU%_cudnn%CUDNN_VERSION%
+python analyze_cnn_benchmark_results.py
+```
+
+## Results
+
 We use the following GPUs (roughly sorted by performance):
 
 |GPU|Cloud|Instance Name|Arch|CUDA Cores|FP32 TFLOPS|Memory GB|Bandwidth GB/s|Release Date|
@@ -97,6 +134,7 @@ We use the Torch implementation of Inception-V1 from
 |Tesla K80                |5.1.10 |  45.43| 111.21| 156.64|
 |GRID K520                |5.1.10 |  86.28| 226.87| 313.15|
 |CPU: Dual Xeon E5-2666 v3|None   |1569.44|1904.28|3473.72|
+
 
 ## VGG-16
 (input 16 x 3 x 224 x 224)
@@ -246,23 +284,6 @@ the model.
 |Quadro P5000             |5.1.10 | 146.78| 275.36| 422.14|
 |Tesla K80                |5.1.10 | 385.33| 904.29|1289.63|
 |CPU: Dual Xeon E5-2666 v3|None   |5298.52|9668.13|14966.64|
-
-
-## Template shell recipe
-
-Template shell script to download the model weights, run the benchmark and format results:
-
-```bash
-sudo apt install golang-go
-export GOPATH=/home/%USER%
-go get github.com/prasmussen/gdrive
-git clone https://github.com/rejunity/cnn-benchmarks.git
-cd cnn-benchmarks
-gdrive download 0Byvt-AfX75o1STUxZTFpMU10djA
-unzip models.zip 
-python run_cnn_benchmarks.py --output_dir outputs/%GPU%_cudnn%CUDNN_VERSION%
-python analyze_cnn_benchmark_results.py
-```
 
 ## Citations
 
