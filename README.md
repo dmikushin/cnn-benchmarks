@@ -8,6 +8,17 @@ This benchmark is based on [jcjohnson/cnn-benchmarks](https://github.com/jcjohns
 
 Install recent CUDA and cuDNN. Make sure CUBLAS is also installed (in recent versions of CUDA it is packaged separately).
 
+The current codebase has been tested on CUDA 10.1 (V10.1.168) & cuDNN 7.6.4.
+
+Checkout the repository:
+
+```
+https://github.com/dmikushin/cnn-benchmarks.git
+cd cnn-benchmarks
+git submodule init
+git submodule update --recursive
+```
+
 Download the model weights:
 
 ```bash
@@ -25,17 +36,19 @@ unzip models.zip
 Prepare Torch installation:
 
 ```
+cd torch
 ./clean.sh
-export TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__"
-./install.sh
+TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__" ./install.sh
+install/bin/torch-activate
+cd ..
 ```
 
 Run the benchmark and format the results:
 
 ```
-export GPU=$(nvidia-smi --query-gpu="gpu_name" --format=csv,noheader -i 0)
-git clone https://github.com/torch/distro.git torch --recursive
-python run_cnn_benchmarks.py --output_dir outputs/%GPU%_cudnn%CUDNN_VERSION%
+export GPU=v100
+export CUDNN_VERSION=7604
+python run_cnn_benchmarks.py --output_dir outputs/$GPU_cudnn$CUDNN_VERSION
 python analyze_cnn_benchmark_results.py
 ```
 
