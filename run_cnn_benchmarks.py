@@ -30,7 +30,7 @@ def main(args):
     'use_cudnn': [int(c) for c in args.use_cudnns.split(',')],
   } 
 
-  base_command = 'th cnn_benchmark.lua'
+  base_command = 'torch/install/bin/th cnn_benchmark.lua'
 
   try: 
     os.makedirs(args.output_dir)
